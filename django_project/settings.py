@@ -41,7 +41,7 @@ if not PRODUCTION:
     ALLOWED_HOSTS += ['.localhost', '127.0.0.1', '[::1]']
 
 # For CSRF origin check verification
-CSRF_TRUSTED_ORIGINS = [f'{APP_NAME}.up.railway.app']
+CSRF_TRUSTED_ORIGINS = [f'https://{APP_NAME}.up.railway.app'] #menambahkan https karena CSRF error
 
 # Application definition
 
@@ -96,6 +96,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        #edit
+        'USER' : 'root',
+        'PASSWORD' : 'genap123',
     }
 }
 

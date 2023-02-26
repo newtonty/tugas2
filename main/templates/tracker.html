@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h5>Nama: </h5>
+<p>Fill me!</p>
+
+<table>
+    <tr>
+        <th>Nama</th>
+        <th>Subject</th>
+        <th>Date</th>
+        <th>Progress</th>
+        <th>Deskripsi</th>
+    </tr>
+    {% for assignment in list_of_assignments %}
+        <tr>
+            <td>{{assignment.name}}</td>
+            <td>{{assignment.subject}}</td>
+            <td>{{assignment.date}}</td>
+            <td>{{assignment.progress}}</td>
+            <td>{{assignment.description}}</td>
+        </tr>
+    {% endfor %}
+
+    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
+</table>
+
+{% endblock content %}
