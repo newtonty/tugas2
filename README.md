@@ -83,4 +83,53 @@ https://medium.com/@oazzat19/what-is-the-difference-between-html-vs-xml-vs-json-
 https://byjus.com/free-ias-prep/difference-between-xml-and-html/
 https://docs.oracle.com/en/cloud/saas/data-cloud/data-cloud-help-center/IntegratingBlueKaiPlatform/data_delivery.html
 
-# README TUGAS 4 BELUM DIBUAT
+# TUGAS 4
+
+## Kegunaan CSRF Token
+CSRF Token berfungsi sebagai security yang menjaga terambilnya data. Token yang digenerate pada setiap kali merefresh akan mengubah input dengan melakukan hashing. Apabila tidak menggunakan CSRF Token, kita tidak dapat menggunakan method Post dan akan tertulis fobidden pada server.
+
+## Membuat Form secara manual
+Pembuatan form secara manual dapat dilakukan dengan menggunakan method form yang terdapat dalam HTML.
+contoh penggunaan:
+<form method='post'>
+    {% csrf_token %}
+    <label for="message">Message: </label>
+    <input type="text" name="mess" id="message">
+    <button type="Submit">Kirim</button>
+</form>
+                         
+## Alur proses pengisian form
+1. Browser menggenerate HTTP Request menuju url
+2. Server menerima HTTP Request dan menggenerate HTML page FORM
+3. Menampilkan HTML pada browser
+4. Server menggenerate HTTP Request, methtod, dan argumen menuju UTL Destination berdasarkan on HTML Page FORM
+5. User melakukan pengisian form
+6. Server Menerima HTTP Request
+7. Server enggenerate HTML Page
+8. Menampilkan HTML Page pada browser
+
+Saat user melakukan pengisian form, views akan menerima data dan menyampaikannya ke models. Kemudian models akan mengolah data dan menyimpannya pada database. Models bertugas melakukan transaksi data terhadap database. Kemudian models akan menyampaikan data yang diperlukan ke views, lalu views melakukan merge terhadap template.
+
+## Pengimplementasian
+1. Membuat form registrasi
+Membuat fungsi register pada views.py
+![image](https://user-images.githubusercontent.com/113079090/224529058-0ba3a85a-5062-467b-a6a3-7ef4c8941d3d.png)
+Membuat html register pada templates
+![image](https://user-images.githubusercontent.com/113079090/224529024-afefee9f-5976-4ded-a3f7-412047299131.png)
+
+2. Membuat form login
+Membuat fungsi login pada views.py
+![image](https://user-images.githubusercontent.com/113079090/224529096-68311d00-0111-4e05-8c8a-9dbe6203a52e.png)
+Membuat html login pada templates
+![image](https://user-images.githubusercontent.com/113079090/224529160-c1bef310-2b7f-46c2-823f-dd2cacc9bd58.png)
+
+3. Membuat fungsi logout
+Membuat fungsi logout pada views
+![image](https://user-images.githubusercontent.com/113079090/224529204-ddf2c275-3658-4fcd-9d57-29c1ed233bce.png)
+
+5. Melakukan restriksi akses hanya pada pengguna yang sudah login
+![image](https://user-images.githubusercontent.com/113079090/224529248-7336e80a-bf22-4dd6-abb9-a8877b1d13c2.png)
+
+Source:
+Kelas Terbuka. (2018). Tutorial Django 1.11 Bahasa Indonesia. Retrieved from https://youtube.com/playlist?list=PLZS-MHyEIRo6p_RwsWntxMO5QAqIHHHld
+2023 PBP Fasilkom UI. (2023). Tutorial 3. Retrieved from https://pbp-fasilkom-ui.github.io/genap-2023/tutorial/tutorial-3/
